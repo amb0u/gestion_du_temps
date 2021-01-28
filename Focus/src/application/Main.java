@@ -25,6 +25,10 @@ public class Main extends Application {
 			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/accueil.fxml")));//0
 			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/parametres.fxml")));//1
 			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/calendrier.fxml")));//2
+			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/Evenement.fxml")));//3
+			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/AjouterEvenement.fxml")));//4
+			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/AjouterHoraire.fxml")));//5
+			
 			root.getChildren().add(grid.get(0));
 			Scene scene = new Scene(root,700,700);
 			scene.getStylesheets().add(getClass().getResource("application.css" ).toExternalForm());
@@ -34,7 +38,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+	//La méthode suivante n'est pas utilisée 
 	public static Pane getPane(int ind){
 		return grid.get(ind);
 	}

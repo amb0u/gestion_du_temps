@@ -1,11 +1,10 @@
 package application;
 	
-import javafx.application.Platform;
-
-import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -20,10 +19,16 @@ public class AccueilController implements Initializable{
 	@FXML
 	private Button cal;//aller vers le calendrier
 	@FXML
+	private Button programme_aujourdhui;
+	@FXML
 	private Button quitter;//aller vers le calendrier
 	@FXML
 	public void affichercal(ActionEvent event) {
 		Main.setPane(2);
+	}
+	@FXML
+	public void button_programme_aujourdhui(ActionEvent event) {
+		Main.setPane(3);
 	}
 	@FXML
 	public void quitter(ActionEvent event) {
