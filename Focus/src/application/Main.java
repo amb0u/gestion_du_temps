@@ -28,8 +28,13 @@ public class Main extends Application {
 			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/Evenement.fxml")));//3
 			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/AjouterEvenement.fxml")));//4
 			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/AjouterHoraire.fxml")));//5
+		    grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/Accueil.fxml")));//6	
+			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/Inscription.fxml")));//7
+			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/Login.fxml")));//8
+			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/InscriptionError.fxml")));//9
+			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/LoginError.fxml")));//10
 			
-			root.getChildren().add(grid.get(0));
+			root.getChildren().add(grid.get(6));
 			Scene scene = new Scene(root,700,700);
 			scene.getStylesheets().add(getClass().getResource("application.css" ).toExternalForm());
 			primaryStage.setScene(scene);

@@ -21,7 +21,7 @@ public class AjouterHoraireController {
 	}
 	
 	@FXML
-	public void nouveauEvenement(ActionEvent event) {
+	public void retour(ActionEvent event) {
 		Main.setPane(3);
 	}
 	

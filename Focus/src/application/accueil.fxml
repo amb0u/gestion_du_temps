@@ -10,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1532.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AccueilController">
    <children>
-      <Button layoutX="462.0" layoutY="491.0" mnemonicParsing="false" onAction="#button_programme_aujourdhui" prefHeight="109.0" prefWidth="236.0" style="-fx-background-color: black;" text="Programme d'aujourd'hui" textFill="WHITE" wrapText="true">
+      <Button fx:id="today" layoutX="462.0" layoutY="491.0" mnemonicParsing="false" onAction="#aujourdhui" prefHeight="109.0" prefWidth="236.0" style="-fx-background-color: black;" text="Programme d'aujourd'hui" textFill="WHITE" wrapText="true">
          <font>
             <Font size="26.0" />
          </font>
@@ -18,7 +18,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="cal" layoutX="736.0" layoutY="491.0" mnemonicParsing="false" onAction="#affichercal" prefHeight="109.0" prefWidth="197.0" style="-fx-background-color: black;" text="calendrier" textFill="WHITE">
+      <Button fx:id="cal" layoutX="728.0" layoutY="491.0" mnemonicParsing="false" onAction="#affichercal" prefHeight="109.0" prefWidth="197.0" style="-fx-background-color: black;" text="calendrier" textFill="WHITE">
          <font>
             <Font size="26.0" />
          </font>

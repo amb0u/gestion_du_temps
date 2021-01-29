@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ParametresController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AjouterHoraireController">
    <children>
       <Accordion />
       <VBox layoutX="122.0" layoutY="66.0" prefHeight="231.0" prefWidth="466.0">
@@ -25,17 +25,17 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="455.0" layoutY="300.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="131.0" style="-fx-background-color: C0C0C0;" text="Enregistrer">
+      <Button fx:id="enregistrer" layoutX="455.0" layoutY="300.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="39.0" prefWidth="131.0" style="-fx-background-color: C0C0C0;" text="Enregistrer">
          <cursor>
-            <Cursor fx:constant="WAIT" />
+            <Cursor fx:constant="HAND" />
          </cursor>
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="35.0" layoutY="349.0" mnemonicParsing="false" prefWidth="77.0" style="-fx-background-color: C0C0C0;" text="Retour" textFill="WHITE">
+      <Button fx:id="retour" layoutX="35.0" layoutY="349.0" mnemonicParsing="false" onAction="#retour" prefWidth="77.0" style="-fx-background-color: C0C0C0;" text="Retour" textFill="WHITE">
          <cursor>
-            <Cursor fx:constant="WAIT" />
+            <Cursor fx:constant="HAND" />
          </cursor>
          <font>
             <Font name="System Bold" size="12.0" />

@@ -10,16 +10,11 @@ import javafx.scene.control.Button;
 
 public class EvenementController implements Initializable {
 	@FXML
-	private Button calendrier;
+	private Button accueil;
 	@FXML
-	private Button ajouter_evenement;
+	private Button add_evenement_button;
 	@FXML
-	private Button editer_emploi_du_temps;
-	
-	@FXML
-	public void retour(ActionEvent event) {
-		Main.setPane(0);
-	}
+	private Button add_horaire_button;
 	@FXML
 	public void nouveauEvenement(ActionEvent event) {
 		Main.setPane(4);
@@ -27,6 +22,10 @@ public class EvenementController implements Initializable {
 	@FXML
 	public void nouveauHoraire(ActionEvent event) {
 		Main.setPane(5);
+	}
+	@FXML
+	public void retour(ActionEvent event) {
+		Main.setPane(0);
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
