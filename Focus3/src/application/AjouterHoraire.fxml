@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AjouterHoraireController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1532.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AjouterHoraireController">
    <children>
       <Accordion />
-      <VBox layoutX="122.0" layoutY="66.0" prefHeight="231.0" prefWidth="466.0">
+      <VBox layoutX="122.0" layoutY="66.0" prefHeight="584.0" prefWidth="1319.0">
          <children>
-            <TextField prefHeight="75.0" prefWidth="573.0" text="Horaire (sous la format HH:MM -- HH:MM" />
-            <TextField prefHeight="155.0" prefWidth="573.0" />
+            <TextField prefHeight="75.0" prefWidth="573.0" text="Horaire (sous leformat HH:MM )-- HH:MM" />
+            <TextField prefHeight="524.0" prefWidth="960.0" />
          </children>
       </VBox>
-      <Button layoutX="122.0" layoutY="24.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="466.0" style="-fx-background-color: black;" text="Ajouter une horaire" textFill="WHITE">
+      <Button layoutX="129.0" layoutY="14.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="1319.0" style="-fx-background-color: black;" text="Ajouter un horaire" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -25,7 +25,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="enregistrer" layoutX="455.0" layoutY="300.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="39.0" prefWidth="131.0" style="-fx-background-color: C0C0C0;" text="Enregistrer">
+      <Button fx:id="enregistrer" layoutX="1335.0" layoutY="691.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="39.0" prefWidth="131.0" style="-fx-background-color: C0C0C0;" text="Enregistrer">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -33,7 +33,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="retour" layoutX="35.0" layoutY="349.0" mnemonicParsing="false" onAction="#retour" prefWidth="77.0" style="-fx-background-color: C0C0C0;" text="Retour" textFill="WHITE">
+      <Button fx:id="retour" layoutX="31.0" layoutY="711.0" mnemonicParsing="false" onAction="#retour" prefWidth="77.0" style="-fx-background-color: C0C0C0;" text="Retour">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
