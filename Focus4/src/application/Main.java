@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -37,7 +38,10 @@ public class Main extends Application {
 			root.getChildren().add(grid.get(6));
 			Scene scene = new Scene(root,700,700);
 			scene.getStylesheets().add(getClass().getResource("application.css" ).toExternalForm());
+			
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Projet focus");
+			primaryStage.getIcons().add(new Image("/resources/images/icon.png"));
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
