@@ -26,6 +26,10 @@ public class InscriptionController implements Initializable {
 	@FXML
 	private TextField user_id_up;
 	@FXML
+	private TextField age;
+	@FXML
+	private TextField email;
+	@FXML
 	private PasswordField user_password1;
 	@FXML
 	private PasswordField user_password2;
@@ -51,13 +55,14 @@ public class InscriptionController implements Initializable {
 	@FXML
 	public void add_users(ActionEvent event) {
 		conn = MysqlConnect.ConnectDb();
-		String sql = "insert into app_connexion(login,password) values (?,?)";
+		String sql = "insert into login(identifiant,password,email,age) values (?,?,?,?)";
 		try {
 			if(user_password1.getText().equals(user_password2.getText())){
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, user_id_up.getText());
 			pst.setString(2, user_password1.getText());
-			//pst.setString(3, user_password2.getText());
+			pst.setString(3, email.getText());
+			pst.setString(4, age.getText());
 			pst.execute();
 			JOptionPane.showMessageDialog(null, "saved");
 			Main.setPane(8);

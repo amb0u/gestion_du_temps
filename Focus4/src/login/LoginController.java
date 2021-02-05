@@ -30,7 +30,6 @@ public class LoginController implements Initializable{
 	ResultSet rs = null;
 	PreparedStatement pst = null;
 	
-	
 	@FXML
 	public void connexion(ActionEvent e) {
 		//Si les champs sont bien renseignés, alors on va aller directement sur l'application
@@ -47,14 +46,17 @@ public class LoginController implements Initializable{
 	@FXML
 	private void Login(ActionEvent event) throws Exception{
 		conn = MysqlConnect.ConnectDb();
-		String sql = "select * from app_connexion where login = ? and password = ? ";
+		String sql = "select * from login where identifiant = ? and password = ? ";
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, txt_login.getText());
 			pst.setString(2, txt_password.getText());
 			rs = pst.executeQuery();
+			
 			if(rs.next()) {
-				//JOptionPane.showMessageDialog(null, "username and password are correct!");	
+				//JOptionPane.showMessageDialog(null, "username and password are correct!");
+				String utilisateur=txt_login.getText();
+				Main.setUser(utilisateur);
 				Main.setPane(0);
 			}else
 			{
