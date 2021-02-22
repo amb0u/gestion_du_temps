@@ -8,12 +8,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 
 
 
 public class AccueilController implements Initializable{
 
+	@FXML
+	private Label utilisateurs;//utilisateurs connectés
+	@FXML
+	private Label mod;
 	@FXML
 	private Button param;//aller vers parametres
 	@FXML
@@ -38,9 +43,13 @@ public class AccueilController implements Initializable{
 	public void button_param(ActionEvent event) {
 		Main.setPane(1);
 	}
+	@FXML
+	public void utilisateurC(ActionEvent event) {
+		utilisateurs.setText(Main.getUser());
+	}
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+	public void initialize(URL arg0, ResourceBundle rb) {
+		
 		
 	}
 

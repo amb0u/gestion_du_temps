@@ -1,23 +1,21 @@
 package application;
 	
 import java.util.ArrayList;
-
 import java.util.List;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 
 public class Main extends Application {
 	static AnchorPane root;//la fenetre principale
 	static List <Pane> grid=new ArrayList<Pane>(); //grid est une pile de type d'objet de type Pane.
 	private static int ind_c=0;
+	private static String user="pap";
 	@Override
 	public void start(Stage primaryStage) {
 	
@@ -42,7 +40,7 @@ public class Main extends Application {
 			
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Projet focus");
-			primaryStage.getIcons().add(new Image("/resources/images/icon.png"));
+			//primaryStage.getIcons().add(new Image("/src/resources/images/icon.png"));
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -57,8 +55,14 @@ public class Main extends Application {
 		root.getChildren().add(grid.get(ind));
 		ind_c=ind;
 	}
-	
+	public static String getUser() {
+		return user;
+	}
+	public static void setUser(String u) {
+		user = u;
+	}
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
 }

@@ -51,7 +51,7 @@ public class InscriptionController implements Initializable {
 	@FXML
 	public void add_users(ActionEvent event) {
 		conn = MysqlConnect.ConnectDb();
-		String sql = "insert into login_amci(identifiant,password) values (?,?)";
+		String sql = "insert into app_connexion(login,password) values (?,?)";
 		try {
 			if(user_password1.getText().equals(user_password2.getText())){
 			pst = conn.prepareStatement(sql);
@@ -78,3 +78,4 @@ public class InscriptionController implements Initializable {
 	}
 
 }
+

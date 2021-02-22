@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1532.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AccueilController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1532.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AccueilController">
    <children>
       <Button fx:id="today" layoutX="462.0" layoutY="491.0" mnemonicParsing="false" onAction="#aujourdhui" prefHeight="109.0" prefWidth="236.0" style="-fx-background-color: black;" text="Programme d'aujourd'hui" textFill="WHITE" wrapText="true">
          <font>
@@ -54,5 +54,10 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <Label fx:id="utilisateurs" layoutX="152.0" layoutY="12.0" onDragOver="#utilisateurC" prefHeight="25.0" prefWidth="308.0" />
+      <Button layoutX="-6.0" layoutY="8.0" mnemonicParsing="false" onAction="#utilisateurC" opacity="0.68" text="Utilisateur Connecté">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
    </children>
 </Pane>
