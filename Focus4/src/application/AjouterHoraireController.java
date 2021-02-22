@@ -4,7 +4,10 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Time;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,9 +21,13 @@ public class AjouterHoraireController {
 	@FXML
 	private Button retour;
 	@FXML
-	private TextField txt_horaire;
+	private TextField horaire_debut;
+	@FXML
+	private TextField horaire_fin;
 	@FXML
 	private TextField txt_activite;
+	@FXML
+	private TextField description;
 	
 	@FXML
 	public void enregistrer(ActionEvent event) {
@@ -42,16 +49,20 @@ public class AjouterHoraireController {
 	public void AddHoraire() {
 		
 		conn = MysqlConnect.ConnectDb();
-		String sql = "insert into emploi_du_temps (horaire, titre)values(?,?)";
+		String sql = "insert into emploi_du_temps (horaire_debut,horaire_fin,titre,status,description,id_utilisateur)values(?,?,?,?,?,?)";
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, txt_horaire.getText());
-			pst.setString(2, txt_activite.getText());
+			pst.setTime(1, Time.valueOf( horaire_debut.getText()));
+			pst.setTime(2, Time.valueOf( horaire_fin.getText()));
+			pst.setString(3, txt_activite.getText());
+			pst.setString(4, "inachevée");
+			pst.setString(5, description.getText());
+			pst.setInt(6,Main.id );
 			pst.execute();
 			
-			//JOptionPane.showMessageDialog(null, "Horaire Ajouté avec succès");
+			JOptionPane.showMessageDialog(null, "Horaire Ajouté avec succès");
 		} catch (Exception e) {
-			
+			JOptionPane.showMessageDialog(null, e);
 		}
 	}
 

@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,6 +24,10 @@ public class AjouterEvenementController implements Initializable {
 	private TextField txt_titre;
 	@FXML
 	private TextField txt_description;
+	@FXML
+	private TextField date;
+	@FXML
+	private TextField heure;
 	@FXML
 	public void enregistrer(ActionEvent event) {
 		addEvenement();
@@ -41,17 +47,20 @@ public class AjouterEvenementController implements Initializable {
 	public void addEvenement() {
 		
 		conn = MysqlConnect.ConnectDb();
-		String sql = "insert into evenement (titre, description)value(?,?)";
+		String sql = "insert into evenement(titre,description,date,heure,id_utilisateur) values (?,?,?,?,?)";
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, txt_titre.getText());
 			pst.setString(2, txt_description.getText());
+			pst.setString(3, date.getText());
+			pst.setString(4, heure.getText());
+			pst.setInt(5,Main.id );
 			pst.execute();
 			EvenementController e= new EvenementController();
 			e.updateTable();
-			//JOptionPane.showMessageDialog(null, "Evenement ajouté avec succès!");
+			JOptionPane.showMessageDialog(null, "Evenement ajouté avec succès!");
 		} catch (Exception e) {
-			
+			JOptionPane.showMessageDialog(null, e);
 		}
 		
 	}

@@ -2,12 +2,14 @@ package application;
 	
 import javafx.event.ActionEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -20,6 +22,7 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
@@ -136,6 +139,16 @@ public class CalendrierController implements Initializable{
 				numJour.setFill(Paint.valueOf("000000"));
 				numJour.setFont(Font.font("Verdana", FontWeight.EXTRA_BOLD, 20));
 				v.getChildren().add(numJour);
+				LocalDate d=date;
+				v.setOnMouseClicked(e -> {
+					
+					try {
+						loadFootage(d);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				});
 				v.setBorder(new Border(new BorderStroke(Paint.valueOf("FFFFFF"), BorderStrokeStyle.DASHED, new CornerRadii(5), new BorderWidths(1))));
 				v.setPrefHeight(30.0);
 				v.setPrefWidth(40.0);
@@ -155,6 +168,19 @@ public class CalendrierController implements Initializable{
 			}
 			mois.elementAt(i).getChildren().add(panneau_jour);
 		}
+	}
+	public void loadFootage(LocalDate d) throws IOException {
+		//Main.root.getChildren().remove(Main.grid.get(2));
+		FXMLLoader l=new FXMLLoader();
+		l.setLocation(getClass().getResource( "/application/jours.fxml"));
+		Object tableViewParent=l.load();
+		application.JoursController jc=l.getController();
+		jc.initData(d);
+		Main.root.getChildren().add((Pane)tableViewParent);
+		Main.grid.set(11,(Pane)tableViewParent);
+        Main.setInd_c(11);
+		Main.root.getChildren().remove(Main.grid.get(2));
+		Main.setPane(11);
 	}
 	@FXML
 	public void retour(ActionEvent event) {

@@ -14,15 +14,21 @@ import javafx.scene.layout.Pane;
 
 
 public class Main extends Application {
-	static AnchorPane root;//la fenetre principale
-	static List <Pane> grid=new ArrayList<Pane>(); //grid est une pile de type d'objet de type Pane.
+	
+	public static AnchorPane root;//la fenetre principale
+	public static List <Pane> grid=new ArrayList<Pane>(); //grid est une pile de type d'objet de type Pane.
 	private static int ind_c=0;
+	public static int id=0;
+	public static void setInd_c(int ind_c) {
+		Main.ind_c = ind_c;
+	}
+	private static String user="";
 	@Override
 	public void start(Stage primaryStage) {
 	
 		try {
 		    root =(AnchorPane) FXMLLoader.load(getClass().getResource("/application/fond.fxml"));
-			
+			Scene scene = new Scene(root,700,700);
 			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/accueil.fxml")));//0
 			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/parametres.fxml")));//1
 			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/calendrier.fxml")));//2
@@ -34,9 +40,10 @@ public class Main extends Application {
 			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/Login.fxml")));//8
 			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/InscriptionError.fxml")));//9
 			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/LoginError.fxml")));//10
+			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/jours.fxml")));//11
 			
 			root.getChildren().add(grid.get(6));
-			Scene scene = new Scene(root,700,700);
+			
 			scene.getStylesheets().add(getClass().getResource("application.css" ).toExternalForm());
 			
 			primaryStage.setScene(scene);
@@ -55,9 +62,17 @@ public class Main extends Application {
 		root.getChildren().remove(grid.get(ind_c));
 		root.getChildren().add(grid.get(ind));
 		ind_c=ind;
+		
+		
 	}
-	
+	public static String getUser() {
+		return user;//le dernier connecté
+	}
+	public static void setUser(String u) {
+		user = u;
+	}
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
 }
