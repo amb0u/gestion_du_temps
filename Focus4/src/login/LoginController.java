@@ -1,6 +1,9 @@
 package login;
 
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,11 +15,13 @@ import javax.swing.JOptionPane;
 import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 
 public class LoginController implements Initializable{
+	
 	@FXML
 	private Button connect;
 	@FXML
@@ -41,6 +46,8 @@ public class LoginController implements Initializable{
 	public void retour(ActionEvent event) {
 		Main.setPane(6);
 	}
+	// passer  l'utilisateur a l'accueil
+	
 	
 	
 	@FXML
@@ -55,9 +62,20 @@ public class LoginController implements Initializable{
 			
 			if(rs.next()) {
 				//JOptionPane.showMessageDialog(null, "username and password are correct!");
-				String utilisateur=txt_login.getText();
-				Main.setUser(utilisateur);
-				Main.setPane(0);
+				Main.root.getChildren().remove(Main.grid.get(8));
+				FXMLLoader l=new FXMLLoader();
+				l.setLocation(getClass().getResource( "/application/accueil.fxml"));
+				Object tableViewParent=l.load();
+				application.AccueilController ac=l.getController();
+				//Scene tableViewScene=new Scene(tableViewParent);
+				Main.setUser(txt_login.getText());
+				Main.id=rs.getInt("id");
+				Utilisateur n=new Utilisateur(txt_login.getText(),Main.id);
+				ac.initData(n);
+				Main.root.getChildren().add((Pane)tableViewParent);
+				Main.grid.set(0,(Pane)tableViewParent);
+		        Main.setInd_c(0);
+				Main.root.getChildren().remove(Main.grid.get(6));
 			}else
 			{
 				JOptionPane.showMessageDialog(null, "Invalide");
