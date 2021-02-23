@@ -22,7 +22,6 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
@@ -68,6 +67,7 @@ public class CalendrierController implements Initializable{
 	private Button retour;//aller vers le menu
 	@FXML
 	public void afficher(ActionEvent event) {
+		Main.son1();
 		int année=2021;
 		//recuperer l'année
 		try {
@@ -176,19 +176,20 @@ public class CalendrierController implements Initializable{
 		Object tableViewParent=l.load();
 		application.JoursController jc=l.getController();
 		jc.initData(d);
-		Main.root.getChildren().add((Pane)tableViewParent);
-		Main.grid.set(11,(Pane)tableViewParent);
+		Main.root.getChildren().add((AnchorPane)tableViewParent);
+		Main.grid.set(11,(AnchorPane)tableViewParent);
         Main.setInd_c(11);
 		Main.root.getChildren().remove(Main.grid.get(2));
 		Main.setPane(11);
 	}
 	@FXML
 	public void retour(ActionEvent event) {
+		Main.son2();
 		Main.setPane(0);
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

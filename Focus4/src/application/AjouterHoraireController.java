@@ -31,6 +31,7 @@ public class AjouterHoraireController {
 	
 	@FXML
 	public void enregistrer(ActionEvent event) {
+		Main.son3();
 		AddHoraire();
 		//Ici le code pour enregistrer l'horaire fournie 
 		//et la description dans la base de données
@@ -39,6 +40,7 @@ public class AjouterHoraireController {
 	
 	@FXML
 	public void retour(ActionEvent event) {
+		Main.son2();
 		Main.setPane(3);
 	}
 	
@@ -47,7 +49,6 @@ public class AjouterHoraireController {
 	PreparedStatement pst = null;
 	
 	public void AddHoraire() {
-		
 		conn = MysqlConnect.ConnectDb();
 		String sql = "insert into emploi_du_temps (horaire_debut,horaire_fin,titre,status,description,id_utilisateur)values(?,?,?,?,?,?)";
 		try {
@@ -59,7 +60,6 @@ public class AjouterHoraireController {
 			pst.setString(5, description.getText());
 			pst.setInt(6,Main.id );
 			pst.execute();
-			
 			JOptionPane.showMessageDialog(null, "Horaire Ajouté avec succès");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e);
@@ -67,7 +67,7 @@ public class AjouterHoraireController {
 	}
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

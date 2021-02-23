@@ -30,6 +30,7 @@ public class AjouterEvenementController implements Initializable {
 	private TextField heure;
 	@FXML
 	public void enregistrer(ActionEvent event) {
+		Main.son3();
 		addEvenement();
 		//Ici le code pour enregistrer le titre de l'évenement 
 		//et la description dans la base de données
@@ -37,6 +38,7 @@ public class AjouterEvenementController implements Initializable {
 	}
 	@FXML
 	public void retour(ActionEvent event) {
+		Main.son2();
 		Main.setPane(3);
 	}
 	
@@ -59,6 +61,7 @@ public class AjouterEvenementController implements Initializable {
 			EvenementController e= new EvenementController();
 			e.updateTable();
 			JOptionPane.showMessageDialog(null, "Evenement ajouté avec succès!");
+			Main.son3();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e);
 		}
@@ -67,7 +70,7 @@ public class AjouterEvenementController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
