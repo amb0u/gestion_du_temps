@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ParametresController">
+   <children>
+      <TextArea fx:id="texte" layoutX="25.0" layoutY="70.0" prefHeight="228.0" prefWidth="544.0" promptText="Votre mot">
+         <font>
+            <Font name="Ink Free" size="15.0" />
+         </font>
+      </TextArea>
+      <Label layoutX="51.0" layoutY="26.0" text="Commentaires et avis">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <Button fx:id="envoyer" layoutX="388.0" layoutY="325.0" mnemonicParsing="false" onAction="#commenter" prefHeight="39.0" prefWidth="159.0" style="-fx-background-color: C0C0C0;" text="Envoyer" underline="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="retour" layoutX="31.0" layoutY="355.0" mnemonicParsing="false" onAction="#retour" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: C0C0C0;" text="Retour">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
