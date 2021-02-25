@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -29,16 +28,16 @@ public class AjouterEvenementController implements Initializable {
 	@FXML
 	private TextField heure;
 	@FXML
-	public void enregistrer(ActionEvent event) {
-		Main.son3();
+	public void enregistrer() {
+		new Main().son3();
 		addEvenement();
 		//Ici le code pour enregistrer le titre de l'évenement 
 		//et la description dans la base de données
 		Main.setPane(3);//On retourne dans la page Evenement
 	}
 	@FXML
-	public void retour(ActionEvent event) {
-		Main.son2();
+	public void retour() {
+		new Main().son2();
 		Main.setPane(3);
 	}
 	
@@ -61,7 +60,7 @@ public class AjouterEvenementController implements Initializable {
 			EvenementController e= new EvenementController();
 			e.updateTable();
 			JOptionPane.showMessageDialog(null, "Evenement ajouté avec succès!");
-			Main.son3();
+			new Main().son3();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e);
 		}

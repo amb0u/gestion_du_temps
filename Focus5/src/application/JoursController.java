@@ -41,14 +41,14 @@ public class JoursController implements Initializable{
 	private TextArea infos;
 	@FXML
 	public void retourner(ActionEvent event) {
-		Main.son2();
+		new Main().son2();
 		Main.setPane(0);
 	}
 	Connection conn = null;
 	ResultSet rs = null;
 	PreparedStatement pst = null;
 	public void enregistrer(ActionEvent event) {
-		Main.son3();
+		new Main().son3();
 		conn = MysqlConnect.ConnectDb();
 		String sql = "insert into infosdujour(information,jour,user_id) values (?,?,?)";
 		String tabjour[]=datedujour.getText().split("/");
@@ -60,7 +60,7 @@ public class JoursController implements Initializable{
 			pst.setDate(2,d);
 			pst.setInt(3,Main.id );
 			pst.execute();
-			Main.son3();
+			new Main().son3();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e);
 		}

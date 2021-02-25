@@ -74,7 +74,7 @@ public class CalendrierController implements Initializable{
 	private Button retour;//aller vers le menu
 	@FXML
 	public void afficher(ActionEvent event) {
-		Main.son1();
+		new Main().son1();;
 		int année=2021;
 		//recuperer l'année
 		try {
@@ -191,7 +191,7 @@ public class CalendrierController implements Initializable{
 			rs = pst.executeQuery();
 			
 			if(rs.next()) {
-				Main.son1();
+				new Main().son1();;
 				Infosdujour i=new Infosdujour(rs.getString("information"),rs.getDate("jour"),rs.getInt("user_id"));
 				FXMLLoader l=new FXMLLoader();
 				l.setLocation(getClass().getResource( "/application/jours.fxml"));
@@ -205,7 +205,7 @@ public class CalendrierController implements Initializable{
 				Main.setPane(11);
 			}else
 			{
-				Main.son1();
+				new Main().son1();;
 				FXMLLoader l=new FXMLLoader();
 				l.setLocation(getClass().getResource( "/application/jours.fxml"));
 				Object tableViewParent=l.load();
@@ -225,7 +225,7 @@ public class CalendrierController implements Initializable{
 	
 	@FXML
 	public void retour(ActionEvent event) {
-		Main.son2();
+		new Main().son2();
 		Main.setPane(0);
 	}
 	@Override

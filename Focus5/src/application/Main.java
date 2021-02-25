@@ -1,6 +1,5 @@
 package application;
 	
-import java.io.File;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -24,24 +23,21 @@ public class Main extends Application {
 	public static int id=0;
 	
 	//sons
-	public static String chemin1="C:\\Users\\user\\eclipse-workspace\\Focus\\src\\resources\\audio\\theme.wav";
-	public static String chemin2="C:\\Users\\user\\eclipse-workspace\\Focus\\src\\resources\\audio\\retour.wav";
-	public static Media media1=new Media(new File(chemin1).toURI().toString());
-	public static Media media2=new Media(new File(chemin2).toURI().toString());
-	public static String chemin3="C:\\Users\\user\\eclipse-workspace\\Focus\\src\\resources\\audio\\bdd.wav";
-	public static Media media3=new Media(new File(chemin3).toURI().toString());
-	public static MediaPlayer mp1=new MediaPlayer(media1);
-	public static MediaPlayer mp2=new MediaPlayer(media2);
-	public static MediaPlayer mp3=new MediaPlayer(media3);
-	public static void son1() {
+	public Media media1=new Media(getClass().getResource("/resources/audio/theme.wav").toExternalForm());
+	public Media media2=new Media(getClass().getResource("/resources/audio/retour.wav").toExternalForm());
+	public Media media3=new Media(getClass().getResource("/resources/audio/bdd.wav").toExternalForm());
+	public MediaPlayer mp1=new MediaPlayer(media1);
+	public MediaPlayer mp2=new MediaPlayer(media2);
+	public MediaPlayer mp3=new MediaPlayer(media3);
+	public void son1() {
 		mp1.play();
 		mp1.seek(mp1.getStartTime());
 	}
-	public static void son2() {
+	public void son2() {
 		mp2.play();
 		mp2.seek(mp2.getStartTime());
 	}
-	public static void son3() {
+	public void son3() {
 		mp3.play();
 		mp3.seek(mp3.getStartTime());
 	}

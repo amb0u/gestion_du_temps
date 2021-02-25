@@ -40,16 +40,16 @@ public class AccueilController implements Initializable{
 	private Button quitter;//aller vers le calendrier
 	@FXML
 	public void affichercal(ActionEvent event) {
-		Main.son1();
+		new Main().son1();
 		Main.setPane(2);
 	}
 	public void afficheractus(ActionEvent event) {
-		Main.son1();
+		new Main().son1();
 		Main.setPane(12);
 	}
 	@FXML
 	public void aujourdhui(ActionEvent event) throws IOException {
-		Main.son1();
+		new Main().son1();;
 		FXMLLoader le=new FXMLLoader();
 		le.setLocation(getClass().getResource( "/application/Evenement.fxml"));
 		Object tableViewParent=le.load();
@@ -63,12 +63,12 @@ public class AccueilController implements Initializable{
 	}
 	@FXML
 	public void quitter(ActionEvent event) {
-		Main.son2();
+		new Main().son2();
 		Platform.exit();
 	}
 	@FXML
 	public void button_param(ActionEvent event) {
-		Main.son1();
+		new Main().son1();;
 		Main.setPane(1);
 	}
 	

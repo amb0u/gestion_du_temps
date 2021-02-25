@@ -66,24 +66,24 @@ public class EvenementController implements Initializable {
 	private Label label2;
 	@FXML
 	public void nouveauEvenement(ActionEvent event) {
-		Main.son1();
+		new Main().son1();;
 		Main.setPane(4);
 	}
 	@FXML
 	public void nouveauHoraire(ActionEvent event) {
-		Main.son1();
+		new Main().son1();;
 		Main.setPane(5);
 	}
 	@FXML
 	public void retour(ActionEvent event) {
-		Main.son2();
+		new Main().son2();
 		Main.setPane(0);
 	}
 	//mettre a jour le status
 
 	public int changeStatus(@SuppressWarnings("rawtypes") CellEditEvent edittedCell)
     {
-		Main.son3();
+		new Main().son3();
 		String val=edittedCell.getNewValue().toString();
 		if(val.equals("achevée")||val.equals("inachevée")) {
 			Emploi_du_temps even =  table_horaire.getSelectionModel().getSelectedItem();

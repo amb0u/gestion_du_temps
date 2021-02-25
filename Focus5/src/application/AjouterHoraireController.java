@@ -31,7 +31,7 @@ public class AjouterHoraireController {
 	
 	@FXML
 	public void enregistrer(ActionEvent event) {
-		Main.son3();
+		new Main().son3();
 		AddHoraire();
 		//Ici le code pour enregistrer l'horaire fournie 
 		//et la description dans la base de données
@@ -40,7 +40,7 @@ public class AjouterHoraireController {
 	
 	@FXML
 	public void retour(ActionEvent event) {
-		Main.son2();
+		new Main().son2();
 		Main.setPane(3);
 	}
 	

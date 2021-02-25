@@ -23,7 +23,7 @@ public class ActusController implements Initializable{
 	private Button retour;
 	@FXML
 	public void retourner(ActionEvent event) {
-		Main.son2();
+		new Main().son2();
 		Main.setPane(0);
 	}
 	
