@@ -4,10 +4,15 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.Vector;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,12 +27,13 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import login.MysqlConnect;
+
 
 
 
@@ -68,6 +74,7 @@ public class CalendrierController implements Initializable{
 	private Button retour;//aller vers le menu
 	@FXML
 	public void afficher(ActionEvent event) {
+		Main.son1();
 		int année=2021;
 		//recuperer l'année
 		try {
@@ -169,26 +176,61 @@ public class CalendrierController implements Initializable{
 			mois.elementAt(i).getChildren().add(panneau_jour);
 		}
 	}
+	Connection conn = null;
+	ResultSet rs = null;
+	PreparedStatement pst = null;
 	public void loadFootage(LocalDate d) throws IOException {
-		//Main.root.getChildren().remove(Main.grid.get(2));
-		FXMLLoader l=new FXMLLoader();
-		l.setLocation(getClass().getResource( "/application/jours.fxml"));
-		Object tableViewParent=l.load();
-		application.JoursController jc=l.getController();
-		jc.initData(d);
-		Main.root.getChildren().add((Pane)tableViewParent);
-		Main.grid.set(11,(Pane)tableViewParent);
-        Main.setInd_c(11);
-		Main.root.getChildren().remove(Main.grid.get(2));
-		Main.setPane(11);
+		conn = MysqlConnect.ConnectDb();
+		String sql = "select * from infosdujour where jour = ? and user_id = ? ";
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");   
+		Date dateSql=Date.valueOf(dtf.format(d));
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setDate(1,dateSql );
+			pst.setInt(2, Main.id);
+			rs = pst.executeQuery();
+			
+			if(rs.next()) {
+				Main.son1();
+				Infosdujour i=new Infosdujour(rs.getString("information"),rs.getDate("jour"),rs.getInt("user_id"));
+				FXMLLoader l=new FXMLLoader();
+				l.setLocation(getClass().getResource( "/application/jours.fxml"));
+				Object tableViewParent=l.load();
+				application.JoursController jc=l.getController();
+				jc.initData(d,i);
+				Main.root.getChildren().add((AnchorPane)tableViewParent);
+				Main.grid.set(11,(AnchorPane)tableViewParent);
+		        Main.setInd_c(11);
+				Main.root.getChildren().remove(Main.grid.get(2));
+				Main.setPane(11);
+			}else
+			{
+				Main.son1();
+				FXMLLoader l=new FXMLLoader();
+				l.setLocation(getClass().getResource( "/application/jours.fxml"));
+				Object tableViewParent=l.load();
+				application.JoursController jc=l.getController();
+				jc.initData(d);
+				Main.root.getChildren().add((AnchorPane)tableViewParent);
+				Main.grid.set(11,(AnchorPane)tableViewParent);
+		        Main.setInd_c(11);
+				Main.root.getChildren().remove(Main.grid.get(2));
+				Main.setPane(11);
+			}
+			}
+		catch(SQLException e) {
+			
+		}
 	}
+	
 	@FXML
 	public void retour(ActionEvent event) {
+		Main.son2();
 		Main.setPane(0);
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

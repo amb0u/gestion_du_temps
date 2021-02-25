@@ -38,6 +38,6 @@ public class Evenement {
 		}
 		@Override
 		public String toString() {
-			return titre;
+			return this.titre+" a "+this.heure;
 		}
 }

@@ -1,5 +1,6 @@
 package application;
 	
+import java.io.File;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -11,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 
 public class Main extends Application {
@@ -19,6 +22,29 @@ public class Main extends Application {
 	public static List <Pane> grid=new ArrayList<Pane>(); //grid est une pile de type d'objet de type Pane.
 	private static int ind_c=0;
 	public static int id=0;
+	
+	//sons
+	public static String chemin1="C:\\Users\\user\\eclipse-workspace\\Focus\\src\\resources\\audio\\theme.wav";
+	public static String chemin2="C:\\Users\\user\\eclipse-workspace\\Focus\\src\\resources\\audio\\retour.wav";
+	public static Media media1=new Media(new File(chemin1).toURI().toString());
+	public static Media media2=new Media(new File(chemin2).toURI().toString());
+	public static String chemin3="C:\\Users\\user\\eclipse-workspace\\Focus\\src\\resources\\audio\\bdd.wav";
+	public static Media media3=new Media(new File(chemin3).toURI().toString());
+	public static MediaPlayer mp1=new MediaPlayer(media1);
+	public static MediaPlayer mp2=new MediaPlayer(media2);
+	public static MediaPlayer mp3=new MediaPlayer(media3);
+	public static void son1() {
+		mp1.play();
+		mp1.seek(mp1.getStartTime());
+	}
+	public static void son2() {
+		mp2.play();
+		mp2.seek(mp2.getStartTime());
+	}
+	public static void son3() {
+		mp3.play();
+		mp3.seek(mp3.getStartTime());
+	}
 	public static void setInd_c(int ind_c) {
 		Main.ind_c = ind_c;
 	}
@@ -40,8 +66,8 @@ public class Main extends Application {
 			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/Login.fxml")));//8
 			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/InscriptionError.fxml")));//9
 			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/LoginError.fxml")));//10
-			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/jours.fxml")));//11
-			
+			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("/application/jours.fxml")));//11
+			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("/application/actus.fxml")));//12
 			root.getChildren().add(grid.get(6));
 			
 			scene.getStylesheets().add(getClass().getResource("application.css" ).toExternalForm());

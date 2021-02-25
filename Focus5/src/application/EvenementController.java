@@ -2,7 +2,7 @@ package application;
 
 
 import java.net.URL;
-import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Time;
@@ -12,6 +12,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
+
+import com.sun.jdi.connect.spi.Connection;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -63,25 +65,25 @@ public class EvenementController implements Initializable {
 	@FXML
 	private Label label2;
 	@FXML
-	private Button sup_evenement;
-	@FXML
-	private Button sup_horaire;
 	public void nouveauEvenement(ActionEvent event) {
+		Main.son1();
 		Main.setPane(4);
 	}
 	@FXML
 	public void nouveauHoraire(ActionEvent event) {
+		Main.son1();
 		Main.setPane(5);
 	}
 	@FXML
 	public void retour(ActionEvent event) {
+		Main.son2();
 		Main.setPane(0);
 	}
-	
 	//mettre a jour le status
 
 	public int changeStatus(@SuppressWarnings("rawtypes") CellEditEvent edittedCell)
     {
+		Main.son3();
 		String val=edittedCell.getNewValue().toString();
 		if(val.equals("achevée")||val.equals("inachevée")) {
 			Emploi_du_temps even =  table_horaire.getSelectionModel().getSelectedItem();
@@ -105,6 +107,7 @@ public class EvenementController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle rb) {
+		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
 		LocalDateTime now = LocalDateTime.now();  
 		date.setText(dtf.format(now));
@@ -127,59 +130,5 @@ public class EvenementController implements Initializable {
 		URL arg=null;
 		ResourceBundle rb=null;
 		initialize(arg, rb);
-	} 
-	
-	
-	//Fonctions de suppression
-	
-		@FXML
-		public void Delete_Horaire(){
-			int index=-1;
-			index = table_horaire.getSelectionModel().getSelectedIndex();
-			System.out.println(index);
-				conn = MysqlConnect.ConnectDb();
-			    String sql = "delete from emploi_du_temps where id_utilisateur = ? and  horaire_debut= ?";
-			        try {
-			            pst = conn.prepareStatement(sql);
-			            pst.setInt(1, Main.id);
-			            pst.setString(2, col_horaire_debut.getCellData(index).toString());
-			            pst.execute();
-			            JOptionPane.showMessageDialog(null, "Supprimé");
-			            AccueilController ac = new AccueilController();
-			    		ActionEvent e = null;
-			    		ac.aujourdhui(e);
-			        } catch (Exception e) {
-			            JOptionPane.showMessageDialog(null, e);
-			        }
-		    }
-		
-		@FXML
-		public void Delete_Evenement(){
-				conn = MysqlConnect.ConnectDb();
-				
-			    String sql = "delete from evenement where id_utilisateur = ? and  titre= ?";
-			        try {
-			            pst = conn.prepareStatement(sql);
-			            pst.setInt(1, Main.id);
-			           //Ici toString retourne [element] avec crochets
-			            //Il faut donc supprimer les crochets pour la requête sql
-			            String temp= new String();
-			            String nouveau= new String();
-			            temp= col_evenement.getSelectionModel().getSelectedItems().toString();
-			            nouveau = temp.replace("[","");
-			            nouveau = nouveau.replace("]","");
-			            pst.setString(2, nouveau); 
-			            pst.execute();
-			            if(nouveau==null) {
-			            	JOptionPane.showMessageDialog(null, "Supprimé");
-			            }
-			            AccueilController ac = new AccueilController();
-			    		ActionEvent e = null;
-			    		ac.aujourdhui(e);
-			        } catch (Exception e) {
-			            JOptionPane.showMessageDialog(null, e);
-			        }
-		    }
-		
-	
+	}
 }

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1532.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EvenementController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1532.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EvenementController">
    <children>
       <Button layoutX="11.0" layoutY="66.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="247.0" style="-fx-background-color: black;" text="EVENEMENTS" textFill="WHITE">
          <font>
@@ -97,7 +97,10 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="sup_evenement" layoutX="378.0" layoutY="636.0" mnemonicParsing="false" onAction="#Delete_Evenement" prefHeight="25.0" prefWidth="253.0" text="SUPPRIMER (sélectionner un événement)" />
-      <Button fx:id="sup_horaire" layoutX="671.0" layoutY="636.0" mnemonicParsing="false" onAction="#Delete_Horaire" prefHeight="25.0" prefWidth="291.0" text="SUPPRIMER (sélectionner une horaire)" />
+      <Button layoutX="1328.0" layoutY="688.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-color: C0C0C0;" text="Retour">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

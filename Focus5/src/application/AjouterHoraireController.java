@@ -1,6 +1,5 @@
 package application;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,11 +30,9 @@ public class AjouterHoraireController {
 	private TextField description;
 	
 	@FXML
-	public void enregistrer(ActionEvent event) throws IOException {
+	public void enregistrer(ActionEvent event) {
+		Main.son3();
 		AddHoraire();
-		AccueilController ac = new AccueilController();
-		ActionEvent e = null;
-		ac.aujourdhui(e);
 		//Ici le code pour enregistrer l'horaire fournie 
 		//et la description dans la base de données
 		Main.setPane(3);//On retourne dans la page Evenement
@@ -43,6 +40,7 @@ public class AjouterHoraireController {
 	
 	@FXML
 	public void retour(ActionEvent event) {
+		Main.son2();
 		Main.setPane(3);
 	}
 	
@@ -51,7 +49,6 @@ public class AjouterHoraireController {
 	PreparedStatement pst = null;
 	
 	public void AddHoraire() {
-		
 		conn = MysqlConnect.ConnectDb();
 		String sql = "insert into emploi_du_temps (horaire_debut,horaire_fin,titre,status,description,id_utilisateur)values(?,?,?,?,?,?)";
 		try {
@@ -63,9 +60,6 @@ public class AjouterHoraireController {
 			pst.setString(5, description.getText());
 			pst.setInt(6,Main.id );
 			pst.execute();
-			pst.executeUpdate(sql);
-			pst.close();
-			
 			JOptionPane.showMessageDialog(null, "Horaire Ajouté avec succès");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e);
@@ -73,7 +67,7 @@ public class AjouterHoraireController {
 	}
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
