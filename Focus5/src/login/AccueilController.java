@@ -19,14 +19,17 @@ public class AccueilController implements Initializable{
 	private Button sinscrire_button;
 	@FXML
 	public void connexion(ActionEvent event) {
+		Main.son1();
 		Main.setPane(8);
 	}
 	@FXML
 	public void inscription(ActionEvent event) {
+		Main.son1();
 		Main.setPane(7);
 	}
 	@FXML
 	public void quitter(ActionEvent event) {
+		Main.son2();
 		Platform.exit();
 	}
 	

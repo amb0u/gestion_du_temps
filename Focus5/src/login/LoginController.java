@@ -40,10 +40,12 @@ public class LoginController implements Initializable{
 		//Si les champs sont bien renseignés, alors on va aller directement sur l'application
 		//Si les informations sont erronées, alors on aura la page suivante:
 		//Main.setPane(10);
+		Main.son1();
 		Main.setPane(0);
 	}
 	@FXML
 	public void retour(ActionEvent event) {
+		Main.son2();
 		Main.setPane(6);
 	}
 	// passer  l'utilisateur a l'accueil
@@ -61,6 +63,7 @@ public class LoginController implements Initializable{
 			rs = pst.executeQuery();
 			
 			if(rs.next()) {
+				Main.son1();
 				//JOptionPane.showMessageDialog(null, "username and password are correct!");
 				Main.root.getChildren().remove(Main.grid.get(8));
 				FXMLLoader l=new FXMLLoader();

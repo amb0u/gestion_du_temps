@@ -1,6 +1,5 @@
 package login;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,33 +8,31 @@ import javax.swing.JOptionPane;
 
 import application.Emploi_du_temps;
 import application.Evenement;
-import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.sql.Connection;
+
 public class MysqlConnect {
 	 Connection conn = null;
-	 
-	 public static Connection ConnectDb(){
+	    public static Connection ConnectDb(){
 	    
 	        try {
-	            Class.forName("com.mysql.jdbc.Driver");
-	            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/focus","root","");
-	            //JOptionPane.showMessageDialog(null, "Connection Established");
+	            Class.forName("com.mysql.cj.jdbc.Driver");
+	            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/focus","root","mysql");
+	            JOptionPane.showMessageDialog(null, "Connection Established");
 	            return conn;
 	        } catch (Exception e) {
 	            JOptionPane.showMessageDialog(null, e);
 	            return null;
 	   }
 	}
-	 
 	    public static ObservableList<Evenement> getDataEvenement(){
 			Connection conn = ConnectDb();
-			String sql = "select * from evenement where id_utilisateur= ?";
+			String sql = "select * from evenement";
 			ObservableList<Evenement> list = FXCollections.observableArrayList();
 			try {
 				PreparedStatement ps = conn.prepareStatement(sql);
-				ps.setInt(1,Main.id );
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
 					list.add(new Evenement(rs.getString("titre"),rs.getTime("heure"),rs.getString("description")));
@@ -48,11 +45,10 @@ public class MysqlConnect {
 		
 		public static ObservableList<Emploi_du_temps> getDataEmploi_du_temps(){
 			Connection conn = ConnectDb();
-			String sql = "select * from emploi_du_temps where id_utilisateur= ?";
+			String sql = "select * from emploi_du_temps";
 			ObservableList<Emploi_du_temps> list = FXCollections.observableArrayList();
 			try {
 				PreparedStatement ps = conn.prepareStatement(sql);
-				ps.setInt(1, Main.id);
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
 					list.add(new Emploi_du_temps(rs.getInt("id"),rs.getInt("id_utilisateur"),rs.getTime("horaire_debut"),rs.getTime("horaire_fin"),rs.getString("status"),rs.getString("titre"),rs.getString("description")));
