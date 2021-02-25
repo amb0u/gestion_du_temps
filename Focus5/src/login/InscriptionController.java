@@ -42,14 +42,14 @@ public class InscriptionController implements Initializable {
 	
 	@FXML
 	public void confirmation(ActionEvent event) {
-		Main.son1();
+		new Main().son1();;
 		//si l'utilisateur remplit correctement les champs, il va se diriger dans la page login ---->Main.setPane(2)
 		//si l'utilisateur commet une erreur sur les mots de passe, alors 
 		Main.setPane(9);
 	}
 	@FXML
 	public void retour(ActionEvent event) {
-		Main.son2();
+		new Main().son2();
 		Main.setPane(6);
 	}
 	
