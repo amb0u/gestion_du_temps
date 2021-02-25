@@ -49,12 +49,15 @@ public class AjouterHoraireController {
 	PreparedStatement pst = null;
 	
 	public void AddHoraire() {
+	Time deb=Time.valueOf( horaire_debut.getText());
+	Time fin=Time.valueOf( horaire_fin.getText());
+		if(deb.before(fin)) {
 		conn = MysqlConnect.ConnectDb();
 		String sql = "insert into emploi_du_temps (horaire_debut,horaire_fin,titre,status,description,id_utilisateur)values(?,?,?,?,?,?)";
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setTime(1, Time.valueOf( horaire_debut.getText()));
-			pst.setTime(2, Time.valueOf( horaire_fin.getText()));
+			pst.setTime(1, deb);
+			pst.setTime(2, fin);
 			pst.setString(3, txt_activite.getText());
 			pst.setString(4, "inachevée");
 			pst.setString(5, description.getText());
@@ -64,6 +67,11 @@ public class AjouterHoraireController {
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e);
 		}
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "l'heure de debut doit etre avant celle de fin");
+		}
+		
 	}
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
