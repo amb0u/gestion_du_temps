@@ -33,8 +33,6 @@ public class AjouterHoraireController {
 	public void enregistrer(ActionEvent event) {
 		new Main().son3();
 		AddHoraire();
-		//Ici le code pour enregistrer l'horaire fournie 
-		//et la description dans la base de données
 		Main.setPane(3);//On retourne dans la page Evenement
 	}
 	
@@ -63,6 +61,9 @@ public class AjouterHoraireController {
 			pst.setString(5, description.getText());
 			pst.setInt(6,Main.id );
 			pst.execute();
+			application.EvenementController ec=Main.le.getController();
+			ec.updateTable();
+			ec.initData(Main.id);
 			JOptionPane.showMessageDialog(null, "Horaire Ajouté avec succès");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e);

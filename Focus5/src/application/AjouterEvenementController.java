@@ -31,9 +31,7 @@ public class AjouterEvenementController implements Initializable {
 	public void enregistrer() {
 		new Main().son3();
 		addEvenement();
-		//Ici le code pour enregistrer le titre de l'évenement 
-		//et la description dans la base de données
-		Main.setPane(3);//On retourne dans la page Evenement
+		Main.setPane(3);
 	}
 	@FXML
 	public void retour() {
@@ -46,7 +44,6 @@ public class AjouterEvenementController implements Initializable {
 	PreparedStatement pst = null;
 	
 	public void addEvenement() {
-		
 		conn = MysqlConnect.ConnectDb();
 		String sql = "insert into evenement(titre,description,date,heure,id_utilisateur) values (?,?,?,?,?)";
 		try {
@@ -57,14 +54,14 @@ public class AjouterEvenementController implements Initializable {
 			pst.setString(4, heure.getText());
 			pst.setInt(5,Main.id );
 			pst.execute();
-			EvenementController e= new EvenementController();
-			e.updateTable();
+			application.EvenementController ec=Main.le.getController();
+			ec.updateTable();
+			ec.initData(Main.id);
 			JOptionPane.showMessageDialog(null, "Evenement ajouté avec succès!");
 			new Main().son3();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e);
 		}
-		
 	}
 	
 	@Override

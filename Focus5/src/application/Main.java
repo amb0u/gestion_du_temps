@@ -21,7 +21,7 @@ public class Main extends Application {
 	public static List <Pane> grid=new ArrayList<Pane>(); //grid est une pile de type d'objet de type Pane.
 	private static int ind_c=0;
 	public static int id=0;
-	
+	public static FXMLLoader le;
 	//sons
 	public Media media1=new Media(getClass().getResource("/resources/audio/theme.wav").toExternalForm());
 	public Media media2=new Media(getClass().getResource("/resources/audio/retour.wav").toExternalForm());
@@ -57,11 +57,11 @@ public class Main extends Application {
 			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/Evenement.fxml")));//3
 			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/AjouterEvenement.fxml")));//4
 			grid.add((Pane) FXMLLoader.load(getClass().getResource("/application/AjouterHoraire.fxml")));//5
-		    grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/Accueil.fxml")));//6	
-			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/Inscription.fxml")));//7
-			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/Login.fxml")));//8
-			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/InscriptionError.fxml")));//9
-			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("../login/LoginError.fxml")));//10
+		    grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("/login/Accueil.fxml")));//6	
+			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("/login/Inscription.fxml")));//7
+			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("/login/Login.fxml")));//8
+			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("/login/InscriptionError.fxml")));//9
+			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("/login/LoginError.fxml")));//10
 			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("/application/jours.fxml")));//11
 			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("/application/actus.fxml")));//12
 			root.getChildren().add(grid.get(6));

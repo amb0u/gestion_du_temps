@@ -54,6 +54,7 @@ public class AccueilController implements Initializable{
 		le.setLocation(getClass().getResource( "/application/Evenement.fxml"));
 		Object tableViewParent=le.load();
 		application.EvenementController ec=le.getController();
+		Main.le=le;
 		ec.initData(Main.id);
 		Main.root.getChildren().add((Pane)tableViewParent);
 		

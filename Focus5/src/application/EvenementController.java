@@ -89,6 +89,7 @@ public class EvenementController implements Initializable {
 			Emploi_du_temps even =  table_horaire.getSelectionModel().getSelectedItem();
 			even.setStatus(edittedCell.getNewValue().toString());
 			MysqlConnect.MAJEmploi(even);
+			initData(Main.id);
 			return 0;
 		}
         JOptionPane.showMessageDialog(null, "entrez achevée ou inachevée");
@@ -101,6 +102,13 @@ public class EvenementController implements Initializable {
 		ratio.setText(d.format(MysqlConnect.calcRatio(id)) +"%");
 		
 	}
+	public void updateTable() {
+		listEmploi = MysqlConnect.getDataEmploi_du_temps();
+		table_horaire.setItems(listEmploi);
+		listE = MysqlConnect.getDataEvenement();
+		col_evenement.setItems(listE);
+	}
+	
 	Connection conn = null;
 	ResultSet rs = null;
 	PreparedStatement pst = null;
@@ -126,9 +134,5 @@ public class EvenementController implements Initializable {
 		
 	}
 	
-	public void updateTable() {
-		URL arg=null;
-		ResourceBundle rb=null;
-		initialize(arg, rb);
-	}
+	
 }
