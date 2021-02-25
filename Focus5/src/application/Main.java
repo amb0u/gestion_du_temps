@@ -70,7 +70,7 @@ public class Main extends Application {
 			
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Projet focus");
-			primaryStage.getIcons().add(new Image("/resources/images/icon.png"));
+			primaryStage.getIcons().add(new Image(getClass().getResource("/resources/images/icon.png").toExternalForm()));
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
