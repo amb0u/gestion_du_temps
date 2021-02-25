@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1532.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AccueilController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1532.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AccueilController">
    <children>
-      <Button fx:id="today" layoutX="427.0" layoutY="491.0" mnemonicParsing="false" onAction="#aujourdhui" prefHeight="109.0" prefWidth="271.0" style="-fx-background-color: black;" text="Programme d'aujourd'hui" textFill="WHITE" wrapText="true">
+      <Button fx:id="today" layoutX="421.0" layoutY="495.0" mnemonicParsing="false" onAction="#aujourdhui" prefHeight="102.0" prefWidth="236.0" style="-fx-background-color: black;" text="Programme d'aujourd'hui" textFill="WHITE" wrapText="true">
          <font>
             <Font size="26.0" />
          </font>
@@ -18,7 +18,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="cal" layoutX="728.0" layoutY="491.0" mnemonicParsing="false" onAction="#affichercal" prefHeight="109.0" prefWidth="253.0" style="-fx-background-color: black;" text="Actualités du jour" textFill="WHITE">
+      <Button fx:id="cal" layoutX="673.0" layoutY="495.0" mnemonicParsing="false" onAction="#affichercal" prefHeight="102.0" prefWidth="151.0" style="-fx-background-color: black;" text="calendrier" textFill="WHITE">
          <font>
             <Font size="26.0" />
          </font>
@@ -26,13 +26,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="param" depthTest="ENABLE" layoutX="1152.0" layoutY="8.0" mnemonicParsing="false" onAction="#button_param" prefHeight="45.0" prefWidth="379.0" style="-fx-background-color: C0C0C0;" text="Nous envoyer un commentaire" underline="true">
+      <Button fx:id="param" depthTest="ENABLE" layoutX="1449.0" layoutY="8.0" mnemonicParsing="false" onAction="#button_param" style="-fx-background-color: C0C0C0;" text="Paramètres" underline="true">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
       </Button>
       <ImageView fitHeight="73.0" fitWidth="253.0" layoutX="581.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -65,5 +62,13 @@
          <font>
             <Font name="Copperplate Gothic Bold" size="28.0" />
          </font></Label>
+      <Button fx:id="actus" layoutX="844.0" layoutY="495.0" mnemonicParsing="false" onAction="#afficheractus" prefHeight="102.0" prefWidth="151.0" style="-fx-background-color: black;" text="Actualités" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="26.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </Pane>
