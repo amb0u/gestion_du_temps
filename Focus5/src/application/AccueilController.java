@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import login.Utilisateur;
 
@@ -31,7 +32,9 @@ public class AccueilController implements Initializable{
 	@FXML
 	private Button param;//aller vers parametres
 	@FXML
-	private Button actus;//aller vers parametres
+	private Button suppr;//aller vers supprimer
+	@FXML
+	private Button actus;//aller vers actualités
 	@FXML
 	private Button cal;//aller vers le calendrier
 	@FXML
@@ -46,6 +49,19 @@ public class AccueilController implements Initializable{
 	public void afficheractus(ActionEvent event) {
 		new Main().son1();
 		Main.setPane(12);
+	}
+	public void supprimer(ActionEvent event) throws IOException {
+		FXMLLoader l=new FXMLLoader();
+		l.setLocation(getClass().getResource( "/application/Supprimer.fxml"));
+		Object tableViewParent=l.load();
+		application.SupprimerController sc=l.getController();
+		sc.initData();
+		Main.root.getChildren().add((AnchorPane)tableViewParent);
+		Main.grid.set(14,(AnchorPane)tableViewParent);
+        Main.setInd_c(14);
+		Main.root.getChildren().remove(Main.grid.get(0));
+		Main.setPane(14);
+		new Main().son3();
 	}
 	@FXML
 	public void aujourdhui(ActionEvent event) throws IOException {
@@ -72,7 +88,10 @@ public class AccueilController implements Initializable{
 		new Main().son1();;
 		Main.setPane(1);
 	}
-	
+	public void deconnecter(ActionEvent event) {
+		new Main().son1();
+		Main.setPane(6);
+	}
 	
 	
 	@Override
