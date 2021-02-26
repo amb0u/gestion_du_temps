@@ -64,6 +64,7 @@ public class Main extends Application {
 			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("/login/LoginError.fxml")));//10
 			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("/application/jours.fxml")));//11
 			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("/application/actus.fxml")));//12
+			grid.add((AnchorPane) FXMLLoader.load(getClass().getResource("/login/InfosCompte.fxml")));//13
 			root.getChildren().add(grid.get(6));
 			
 			scene.getStylesheets().add(getClass().getResource("application.css" ).toExternalForm());

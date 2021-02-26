@@ -100,22 +100,6 @@ public class EvenementController implements Initializable {
 	public void initData (int id){
 		DecimalFormat d=new DecimalFormat(".##");
 		ratio.setText(d.format(MysqlConnect.calcRatio(id)) +"%");
-		
-	}
-	public void updateTable() {
-		listEmploi = MysqlConnect.getDataEmploi_du_temps();
-		table_horaire.setItems(listEmploi);
-		listE = MysqlConnect.getDataEvenement();
-		col_evenement.setItems(listE);
-	}
-	
-	Connection conn = null;
-	ResultSet rs = null;
-	PreparedStatement pst = null;
-	
-	@Override
-	public void initialize(URL arg0, ResourceBundle rb) {
-		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
 		LocalDateTime now = LocalDateTime.now();  
 		date.setText(dtf.format(now));
@@ -131,6 +115,21 @@ public class EvenementController implements Initializable {
 		
 		listE = MysqlConnect.getDataEvenement();
 		col_evenement.setItems(listE);
+	}
+	public void updateTable() {
+		listEmploi = MysqlConnect.getDataEmploi_du_temps();
+		table_horaire.setItems(listEmploi);
+		listE = MysqlConnect.getDataEvenement();
+		col_evenement.setItems(listE);
+	}
+	
+	Connection conn = null;
+	ResultSet rs = null;
+	PreparedStatement pst = null;
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle rb) {
+		
 		
 	}
 	
