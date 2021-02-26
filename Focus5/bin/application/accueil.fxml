@@ -70,5 +70,15 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Button fx:id="suppr" depthTest="ENABLE" layoutX="1363.0" layoutY="8.0" mnemonicParsing="false" onAction="#supprimer" style="-fx-background-color: C0C0C0;" text="Supprimer" underline="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="param1" depthTest="ENABLE" layoutX="1261.0" layoutY="8.0" mnemonicParsing="false" onAction="#deconnecter" style="-fx-background-color: C0C0C0;" text="Se deconnecter" underline="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </Pane>
