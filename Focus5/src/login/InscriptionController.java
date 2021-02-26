@@ -2,8 +2,10 @@ package login;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -56,7 +58,8 @@ public class InscriptionController implements Initializable {
 	@FXML
 	public void add_users(ActionEvent event) {
 		conn = MysqlConnect.ConnectDb();
-		String sql = "insert into login(identifiant,password,email,age) values (?,?,?,?)";
+		Date d = new Date(Calendar.getInstance().getTime().getTime());
+		String sql = "insert into login(identifiant,password,email,age,date_creation) values (?,?,?,?,?)";
 		try {
 			if(user_password1.getText().equals(user_password2.getText())){
 			pst = conn.prepareStatement(sql);
@@ -64,6 +67,7 @@ public class InscriptionController implements Initializable {
 			pst.setString(2, user_password1.getText());
 			pst.setString(3, email.getText());
 			pst.setString(4, age.getText());
+			pst.setDate(5, d);
 			pst.execute();
 			JOptionPane.showMessageDialog(null, "saved");
 			Main.setPane(8);
