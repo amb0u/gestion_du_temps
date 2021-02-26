@@ -3,6 +3,8 @@ package login;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Time;
+import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 
@@ -13,6 +15,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.Connection;
+import java.sql.Date;
 
 public class MysqlConnect {
 	 Connection conn = null;
@@ -101,17 +104,68 @@ public class MysqlConnect {
 			}
 			return 0;
 		}
-		 public static int vider(){
+		public static String EvenementsAvider(){
+			Date d = new Date(Calendar.getInstance().getTime().getTime());
+			Connection conn = ConnectDb();
+			String s="les évenements suivants peuvent etres supprimés:\n";
+			String sql = "select * from evenement where id_utilisateur=? and DATEDIFF(date,?) >=2";
+			try {
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setInt(1, Main.id);
+				ps.setDate(2, d);
+				ResultSet rs = ps.executeQuery();
+				while (rs.next()) {
+					s+=rs.getString("titre")+" ajouté le "+rs.getDate("date")+"\n";
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			return s;
+		}
+		public static String HorairesAvider(){
+			long now = System.currentTimeMillis();
+			Time t = new Time(now);
+			Connection conn = ConnectDb();
+			String s="les horaires suivants sont passés et peuvent etres supprimés:\n";
+			String sql = "Select * from emploi_du_temps where id_utilisateur=? and CAST(horaire_fin As Time) <=?";
+			try {
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setInt(1, Main.id);
+				ps.setTime(2, t);
+				ResultSet rs = ps.executeQuery();
+				while (rs.next()) {
+					s+=rs.getString("titre")+" commencant a "+rs.getTime("horaire_debut")+" et finissant a "+rs.getTime("horaire_fin")+"\n";
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			return s;
+		}
+		
+		 public static int viderHoraires(){
 				Connection conn = ConnectDb();
-				String sql = "delete from evenement where id_utilisateur=?";
-				ObservableList<Evenement> list = FXCollections.observableArrayList();
+				long now = System.currentTimeMillis();
+				Time t = new Time(now);
+				String sql = "delete from emploi_du_temps where id_utilisateur=? and CAST(horaire_fin As Time) <=?";
 				try {
 					PreparedStatement ps = conn.prepareStatement(sql);
 					ps.setInt(1, Main.id);
-					ResultSet rs = ps.executeQuery();
-					while (rs.next()) {
-						list.add(new Evenement(rs.getString("titre"),rs.getTime("heure"),rs.getString("description")));
-					}
+					ps.setTime(2, t);
+					ps.execute();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+				return 0;
+			}
+		 public static int viderEvenements(){
+				Connection conn = ConnectDb();
+				Date d = new Date(Calendar.getInstance().getTime().getTime());
+				String sql = "delete from evenement where id_utilisateur=? and DATEDIFF(date,?) >=2";
+				try {
+					PreparedStatement ps = conn.prepareStatement(sql);
+					ps.setInt(1, Main.id);
+					ps.setDate(2, d);
+					ps.execute();
 				} catch(Exception e) {
 					e.printStackTrace();
 				}
